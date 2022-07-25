@@ -1,5 +1,15 @@
 "use strict";
 
+function randomizingBGC() {
+  const color = `rgb(${Math.round(Math.random() * (255 - 0)) + 0},${
+    Math.round(Math.random() * (255 - 0)) + 0
+  },${Math.round(Math.random() * (255 - 0)) + 0})`;
+
+  document.querySelector(".content").style.backgroundColor = color;
+}
+
+randomizingBGC();
+
 const winCombos = [
   [1, 5, 9],
   [3, 5, 7],
@@ -22,6 +32,10 @@ const drawCombos = [
   [1, 2, 6, 7, 9],
   [2, 5, 6, 7, 9],
   [1, 3, 4, 5, 8],
+  [1, 2, 6, 7, 8],
+  [2, 3, 4, 8, 9],
+  [2, 4, 6, 7, 9],
+  [1, 3, 4, 6, 8],
 ];
 
 const unitsCollection = [...document.querySelectorAll(".unit")];
