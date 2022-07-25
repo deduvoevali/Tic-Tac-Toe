@@ -4,28 +4,15 @@
   box-sizing: border-box;
 }
 
-.the-winner {
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) translateX(50%);
-  background-color: #fff;
-  padding: 0 5%;
-  right: -45%;
-  border-radius: 4vw;
-  border: 0.86vw solid;
-  transition: 0.7s;
-  color: rgb(0, 0, 0);
-}
-.the-winner--active {
-  right: 50%;
-}
-
-.the-winner-descr {
-  font-family: system-ui, -apple-system, Roboto, sans-serif;
-  font-weight: 500;
-  font-size: 8vw;
-  line-height: 6.1vw;
+@keyframes show {
+  from {
+    width: 0%;
+    height: 0%;
+    transform: rotate(-180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 .content {
@@ -59,7 +46,7 @@
     padding: 12%;
     background-color: #fff;
     cursor: pointer;
-    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .o {
@@ -70,6 +57,7 @@
       height: 88%;
       background: url(../img/o.svg) center center/cover no-repeat;
       cursor: default;
+      animation: 0.5s show;
     }
   }
   .x {
@@ -80,6 +68,44 @@
       height: 100%;
       background: url(../img/x.svg) center center/cover no-repeat;
       cursor: default;
+      animation: 0.3s show;
     }
+  }
+}
+
+.the-winner {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(50%);
+  background-color: #fff;
+  padding: 0 5%;
+  right: -45%;
+  border-radius: 4vw;
+  border: 0.86vw solid;
+  transition: 0.7s;
+  color: rgb(0, 0, 0);
+}
+
+.the-winner--active {
+  right: 50%;
+}
+
+.the-winner-descr {
+  font-family: system-ui, -apple-system, Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 8vw;
+  line-height: 6.1vw;
+}
+
+@media (max-width: 600px) {
+  .field {
+    width: 64vw;
+    height: 64vw;
+    gap: 1.8vw;
+  }
+
+  .the-winner-descr {
+    font-size: 10vw;
   }
 }

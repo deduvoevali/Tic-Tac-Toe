@@ -36,6 +36,7 @@ const drawCombos = [
   [2, 3, 4, 8, 9],
   [2, 4, 6, 7, 9],
   [1, 3, 4, 6, 8],
+  [1, 5, 6, 7, 8],
 ];
 
 const unitsCollection = [...document.querySelectorAll(".unit")];
@@ -90,8 +91,6 @@ function hideField() {
   }, 2000);
 }
 
-addEventListeners();
-
 function showTheWinnerModal(text) {
   document.querySelector(".the-winner-descr").textContent = text;
   modal.classList.add("the-winner--active");
@@ -124,3 +123,5 @@ function checkTheDraw() {
 function isIncludes(arr1, arr2) {
   return arr1.filter((item) => arr2.includes(item));
 }
+
+addEventListeners();
