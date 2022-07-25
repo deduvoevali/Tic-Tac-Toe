@@ -37,6 +37,7 @@ const drawCombos = [
   [2, 4, 6, 7, 9],
   [1, 3, 4, 6, 8],
   [1, 5, 6, 7, 8],
+  [2, 3, 4, 5, 9],
 ];
 
 const unitsCollection = [...document.querySelectorAll(".unit")];
