@@ -98,17 +98,35 @@ function showTheWinnerModal(text) {
 }
 
 function checkTheWinner() {
-  winCombos.forEach((combo) => {
+  winCombos.forEach(function (combo) {
     if (isIncludes(xSteps, combo).length == 3) {
-      showTheWinnerModal("X WINS!");
       removeEventListeners();
-      hideField();
+      markTheCombo(combo);
+
+      setTimeout(() => {
+        showTheWinnerModal("X WINS!");
+        hideField();
+      }, 1200);
     }
     if (isIncludes(oSteps, combo).length == 3) {
-      showTheWinnerModal("O WINS!");
       removeEventListeners();
-      hideField();
+      markTheCombo(combo);
+
+      setTimeout(() => {
+        showTheWinnerModal("O WINS!");
+        hideField();
+      }, 1200);
     }
+  });
+}
+
+function markTheCombo(combo) {
+  combo.forEach((item, i) => {
+    unitsCollection[item - 1].style.backgroundColor = "#b5ffb5";
+
+    setTimeout(() => {
+      unitsCollection[item - 1].style.backgroundColor = "#fff";
+    }, 1800);
   });
 }
 
