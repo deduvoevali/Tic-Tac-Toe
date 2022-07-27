@@ -1,14 +1,15 @@
 "use strict";
 
 function randomizingBGC() {
-  const color = `rgb(${Math.round(Math.random() * (255 - 0)) + 0},${
+  return `rgb(${Math.round(Math.random() * (255 - 0)) + 0},${
     Math.round(Math.random() * (255 - 0)) + 0
   },${Math.round(Math.random() * (255 - 0)) + 0})`;
-
-  document.querySelector(".content").style.backgroundColor = color;
 }
 
-randomizingBGC();
+const BgColor = randomizingBGC();
+
+document.querySelector(".content").style.backgroundColor = BgColor;
+
 
 const winCombos = [
   [1, 5, 9],
@@ -64,7 +65,9 @@ const makeStep = function () {
 
 function addEventListeners() {
   unitsCollection.forEach((unit) => {
-    unit.addEventListener("click", makeStep, { once: true });
+    unit.addEventListener("click", makeStep, {
+      once: true
+    });
   });
 }
 
@@ -122,7 +125,7 @@ function checkTheWinner() {
 
 function markTheCombo(combo) {
   combo.forEach((item, i) => {
-    unitsCollection[item - 1].style.backgroundColor = "#b5ffb5";
+    unitsCollection[item - 1].style.backgroundColor = BgColor;
 
     setTimeout(() => {
       unitsCollection[item - 1].style.backgroundColor = "#fff";
