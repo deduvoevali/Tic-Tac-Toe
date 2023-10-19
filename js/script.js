@@ -1,15 +1,14 @@
 "use strict";
 
 function randomizingBGC() {
-  return `rgb(${Math.round(Math.random() * (255 - 0)) + 0},${
+  return `rgb(${Math.round(Math.random() * (255 - 0)) + 0},${Math.round(Math.random() * (255 - 0)) + 0},${
     Math.round(Math.random() * (255 - 0)) + 0
-  },${Math.round(Math.random() * (255 - 0)) + 0})`;
+  })`;
 }
 
 const BgColor = randomizingBGC();
 
 document.querySelector(".content").style.backgroundColor = BgColor;
-
 
 const winCombos = [
   [1, 5, 9],
@@ -19,7 +18,7 @@ const winCombos = [
   [3, 6, 9],
   [1, 2, 3],
   [4, 5, 6],
-  [7, 8, 9],
+  [7, 8, 9]
 ];
 
 const drawCombos = [
@@ -38,7 +37,7 @@ const drawCombos = [
   [2, 4, 6, 7, 9],
   [1, 3, 4, 6, 8],
   [1, 5, 6, 7, 8],
-  [2, 3, 4, 5, 9],
+  [2, 3, 4, 5, 9]
 ];
 
 const unitsCollection = [...document.querySelectorAll(".unit")];
@@ -96,8 +95,12 @@ function hideField() {
 }
 
 function showTheWinnerModal(text) {
-  document.querySelector(".the-winner-descr").textContent = text;
-  modal.classList.add("the-winner--active");
+  setTimeout(() => {
+    document.querySelector(".the-winner-descr").textContent = text;
+    modal.classList.add("the-winner--active");
+
+    hideField();
+  }, 1200);
 }
 
 function checkTheWinner() {
@@ -105,20 +108,12 @@ function checkTheWinner() {
     if (isIncludes(xSteps, combo).length == 3) {
       removeEventListeners();
       markTheCombo(combo);
-
-      setTimeout(() => {
-        showTheWinnerModal("X WINS!");
-        hideField();
-      }, 1200);
+      showTheWinnerModal("X WINS!");
     }
     if (isIncludes(oSteps, combo).length == 3) {
       removeEventListeners();
       markTheCombo(combo);
-
-      setTimeout(() => {
-        showTheWinnerModal("O WINS!");
-        hideField();
-      }, 1200);
+      showTheWinnerModal("O WINS!");
     }
   });
 }
@@ -137,7 +132,6 @@ function checkTheDraw() {
   drawCombos.forEach((combo) => {
     if (isIncludes(xSteps, combo).length == 5) {
       showTheWinnerModal("DRAW!");
-      hideField();
     }
   });
 }
